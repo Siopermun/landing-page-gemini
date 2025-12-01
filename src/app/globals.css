@@ -1,0 +1,46 @@
+:root {
+  --primary-color: #007bff; /* A vibrant blue for primary actions and highlights */
+  --secondary-color: #6c757d; /* A muted grey for secondary text */
+  --dark-background: #212529; /* A deep dark for prominent sections */
+  --light-background: #ffffff; /* Pure white for clean sections */
+  --info-color: #17a2b8; /* A complementary info blue */
+}
+
+body {
+  font-family: var(--font-geist-sans), sans-serif;
+  color: #343a40; /* Default text color */
+  background-color: #f8f9fa; /* Overall page background */
+}
+
+/* Custom styles for Bootstrap components to use CSS variables */
+.navbar-dark.bg-dark {
+  background-color: var(--dark-background) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #0056b3 !important; /* Manually darkened primary color */
+  border-color: #0056b3 !important; /* Manually darkened primary color */
+}
+
+.btn-success {
+  color: #000 !important; /* Ensure text has sufficient contrast on green background */
+}
+
+/* Icon colors in services section */
+.service-icon {
+  color: var(--primary-color) !important;
+}
+
+/* Custom focus styles for better accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--primary-color); /* A clear outline using the primary color */
+  outline-offset: 2px; /* Add some space between the element and the outline */
+}
