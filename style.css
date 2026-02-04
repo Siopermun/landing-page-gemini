@@ -54,12 +54,13 @@ header.scrolled {
 }
 
 .logo {
-    font-size: 0; /* Oculta el texto si estuviera, aunque ya lo hemos reemplazado */
-    /* Otros estilos para el contenedor del logo si fueran necesarios */
+    /* Aquí se pueden añadir otros estilos para el contenedor del logo si fueran necesarios */
 }
 
 .header-logo {
+    display: block; /* Asegura que se comporte como un bloque y respete width/height */
     height: 40px; /* Tamaño fijo para el logo */
+    max-width: 100%; /* Asegura que no se desborde */
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -76,7 +77,7 @@ header.scrolled {
 }
 
 nav a {
-    color: var(--heading-color);
+    color: var(--text-color);
     text-decoration: none;
     margin-left: 1.5rem;
     font-weight: 400;
@@ -602,7 +603,7 @@ footer {
 }
 
 .blog-post-card .read-more-button:hover {
-    color: var(--heading-color);
+    color: var(--primary-color); /* Usar primary-color para el hover */
 }
 
 
@@ -670,5 +671,14 @@ footer {
 .service-icon svg {
     width: 30px;
     height: 30px;
+}
+
+
+/* Debugging for images */
+img {
+    outline: 2px solid red !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
 }
 
