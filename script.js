@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- ELEMENT SELECTORS ---
     const headerElement = document.querySelector('header');
-    const heroContentElement = document.querySelector('.hero-content'); // Nuevo selector
     const clockElement = document.getElementById('clock');
     const animatedElements = document.querySelectorAll('.service-card');
     const typingTextElement = document.querySelector('.typing-text');
@@ -17,25 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 headerElement.classList.remove('scrolled');
             }
-        });
-    }
-
-    // --- HEADER SCROLL ---
-    if (headerElement) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                headerElement.classList.add('scrolled');
-            } else {
-                headerElement.classList.remove('scrolled');
-            }
-        });
-    }
-
-    // --- HERO PARALLAX ---
-    if (heroContentElement) {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            heroContentElement.style.transform = `translateY(${scrollY * 0.2}px)`; // Ajusta la velocidad aquí
         });
     }
 
@@ -159,46 +139,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- SPOTLIGHT EFFECT ON SERVICE CARDS ---
-    if (animatedElements.length > 0) {
-        animatedElements.forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.setProperty('--mouse-x', '-1000px');
-                card.style.setProperty('--mouse-y', '-1000px');
-            });
-        });
-    }
-
-    // --- CUSTOM CURSOR ---
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorFollower = document.querySelector('.cursor-follower');
-    const interactableElements = 'a, button, .cta-button, .service-card'; // Elements that interact with the cursor
-
-    if (cursorDot && cursorFollower) {
-        document.addEventListener('mousemove', e => {
-            // Move dot instantly
-            cursorDot.style.left = `${e.clientX}px`;
-            cursorDot.style.top = `${e.clientY}px`;
-
-            // Move follower with a slight delay
-            cursorFollower.style.left = `${e.clientX}px`;
-            cursorFollower.style.top = `${e.clientY}px`;
-        });
-
-        document.querySelectorAll(interactableElements).forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursorFollower.classList.add('interactable');
-            });
-            element.addEventListener('mouseleave', () => {
-                cursorFollower.classList.remove('interactable');
-            });
-        });
-    }
 });

@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
 
 :root {
-    --primary-color: #64ffda;
+    --primary-color: #00aaff;
     --secondary-color: #0a192f;
-    --text-color: #8892b0;
-    --heading-color: #ccd6f6;
+    --text-color: #ccd6f6;
     --card-bg: #112240;
     --border-color: #233554;
-    --glow-color: rgba(100, 255, 218, 0.1);
+    --glow-color: rgba(0, 170, 255, 0.7);
 }
 
 * {
@@ -16,22 +15,13 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--secondary-color);
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: none; /* Oculta el cursor por defecto */
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: var(--heading-color);
-    line-height: 1.1;
+    /* cursor: none; */ /* El cursor personalizado se eliminará del JS */
 }
 
 .container {
@@ -64,12 +54,10 @@ header.scrolled {
 }
 
 .logo {
-    font-size: 2rem; /* Más grande */
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
     text-decoration: none;
-    letter-spacing: 1px; /* Espaciado */
-    text-shadow: 0 0 5px rgba(100, 255, 218, 0.5); /* Sombra */
 }
 
 #clock {
@@ -179,12 +167,9 @@ section:last-of-type {
 
 h2.section-title {
     text-align: center;
-    font-size: 3.5rem; /* Más grande */
+    font-size: 2.5rem;
     margin-bottom: 3rem;
     position: relative;
-    letter-spacing: 2px; /* Más espaciado */
-    text-transform: uppercase; /* Mayúsculas */
-    text-shadow: 0 0 10px rgba(100, 255, 218, 0.3); /* Sombra sutil */
 }
 
 h2.section-title::after {
@@ -355,38 +340,7 @@ footer {
 }
 
 
-/* Custom Cursor */
-.cursor-dot,
-.cursor-follower {
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-}
 
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--primary-color);
-}
-
-.cursor-follower {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(100, 255, 218, 0.1);
-    border: 1px solid var(--primary-color);
-    transition: transform 0.2s ease-out, width 0.3s, height 0.3s;
-}
-
-/* Cursor interaction states */
-.cursor-follower.interactable {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(100, 255, 218, 0.3);
-}
 
 
 /* Testimonials Section */
@@ -430,15 +384,12 @@ footer {
     z-index: -1;
     margin: -2px; /* Grosor del borde */
     border-radius: inherit; /* Hereda el border-radius de la tarjeta */
-    /* Nuevo gradiente azulado con animación */
-    background: linear-gradient(45deg, #00c7ff, #007bff, #00c7ff); /* Tonos azules */
-    background-size: 200% 200%; /* Para que el gradiente se pueda mover */
-    transition: background-position 0.5s ease; /* Transición para la animación */
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color) 70%); /* Gradiente original */
+    transition: opacity 0.3s ease;
 }
 
 .testimonial-card:hover::before {
-    background-position: 100% 100%; /* Mueve el gradiente al pasar el ratón */
-    opacity: 1; /* Hace el gradiente completamente visible */
+    opacity: 0.8; /* Opacidad original */
 }
 
 .testimonial-card:hover {
@@ -446,27 +397,12 @@ footer {
     box-shadow: 0 12px 30px var(--glow-color);
 }
 
-.testimonial-card p.testimonial-text {
+.testimonial-card p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
     color: var(--text-color);
-    flex-grow: 1;
-    position: relative; /* Para posicionar pseudo-elemento de comilla */
-    padding-left: 1.5rem; /* Espacio para la comilla */
-}
-
-/* Pseudo-elemento para comilla grande */
-.testimonial-card p.testimonial-text::before {
-    content: '\201C'; /* Comilla de apertura */
-    font-size: 4rem;
-    color: rgba(100, 255, 218, 0.1); /* Color sutil */
-    position: absolute;
-    top: 0;
-    left: 0;
-    line-height: 1;
-    z-index: 0;
-    font-family: serif; /* Para que la comilla se vea bien */
+    flex-grow: 1; /* Permite que el párrafo ocupe el espacio disponible */
 }
 
 .client-info {
@@ -532,14 +468,12 @@ footer {
     z-index: -1;
     margin: -2px; /* Grosor del borde */
     border-radius: inherit; /* Hereda el border-radius de la tarjeta */
-    background: linear-gradient(45deg, #00c7ff, #007bff, #00c7ff); /* Gradiente azulado */
-    background-size: 200% 200%; /* Para la animación */
-    transition: background-position 0.5s ease;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color) 70%); /* Gradiente original */
+    transition: opacity 0.3s ease;
 }
 
 .blog-post-card:hover::before {
-    background-position: 100% 100%; /* Mueve el gradiente al pasar el ratón */
-    opacity: 1;
+    opacity: 0.8; /* Opacidad original */
 }
 
 .blog-post-card:hover {
