@@ -54,10 +54,18 @@ header.scrolled {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
+    font-size: 0; /* Oculta el texto si estuviera, aunque ya lo hemos reemplazado */
+    /* Otros estilos para el contenedor del logo si fueran necesarios */
+}
+
+.header-logo {
+    height: 40px; /* Tamaño fijo para el logo */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05); /* Pequeño efecto al hacer hover */
 }
 
 #clock {
@@ -106,14 +114,51 @@ nav a:hover::after {
     text-align: left;
 }
 
+#hero .hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem; /* Espacio entre el texto y la imagen */
+    flex-direction: column; /* Por defecto en móvil */
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    #hero .hero-container {
+        flex-direction: row; /* En escritorio, lado a lado */
+        text-align: left;
+    }
+}
+
 .hero-content {
     max-width: 700px;
+    flex: 1; /* Permite que ocupe el espacio disponible */
+}
+
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.03);
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    color: var(--text-color); /* Usar el color de texto original */
 }
 
 .hero-content .typing-text {
@@ -558,5 +603,72 @@ footer {
 
 .blog-post-card .read-more-button:hover {
     color: var(--heading-color);
+}
+
+
+/* About Section */
+#about .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    #about .about-content {
+        flex-direction: row;
+        text-align: left;
+        justify-content: center;
+    }
+}
+
+.about-image-container {
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+}
+
+.about-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover; /* Asegura que la imagen cubra el área */
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+    transform: scale(1.05);
+}
+
+.about-text {
+    max-width: 600px;
+}
+
+
+/* Service Card Icons */
+.service-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    margin: 0 auto 1rem auto;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.service-icon svg {
+    width: 30px;
+    height: 30px;
 }
 
