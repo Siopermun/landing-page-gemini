@@ -1,0 +1,74 @@
+# Palabras Clave y Hashtags para Siopermun
+
+Aquí tienes una lista de palabras clave y hashtags que puedes usar para mejorar la visibilidad de tu sitio web y tus perfiles en redes sociales.
+
+## ¿Cómo usar estas palabras clave?
+
+- **En tu sitio web:**
+  - **Meta Tags:** Añade las más importantes en las meta etiquetas `description` y `keywords` en el `<head>` de tu archivo `index.html`.
+  - **Contenido:** Integra estas palabras clave de forma natural en los títulos (`<h1>`, `<h2>`) y párrafos de tu página. No las fuerces, la lectura debe ser fluida.
+  - **Atributos ALT en imágenes:** Si añades imágenes, usa estas palabras clave en la descripción del atributo `alt`. Por ejemplo: `<img src="mi-servicio.jpg" alt="Servicio de mantenimiento de PC en Caracas">`.
+
+- **En Redes Sociales:**
+  - Usa los hashtags al final de tus publicaciones en Instagram, Facebook, LinkedIn, etc.
+
+---
+
+## Palabras Clave de Marca (incluyendo errores comunes)
+
+- siopermun
+- cipermun
+- siopermon
+- siopermum
+- cypermun
+- ziopermun
+- seopermun
+- sioperman
+- renier garcia tecnologia
+- siopermun caracas
+
+## Palabras Clave de Servicios Generales
+
+- Soporte técnico computadoras
+- Reparación de PC y laptops
+- Servicio técnico a domicilio
+- Mantenimiento de hardware y software
+- Soluciones informáticas
+- Experto en tecnología
+- Arreglo de computadoras
+
+## Palabras Clave Específicas (Cola Larga)
+
+- Cómo quitar contraseña de Windows 10
+- Eliminar cuenta Google de celular Samsung (FRP)
+- Servicio de desbloqueo de Android en Caracas
+- Desarrollo de landing pages para negocios
+- Creación de páginas web económicas
+- Instalar sistema operativo a domicilio
+- Limpieza y optimización de laptop lenta
+- Técnico de computadoras cerca de mí
+- Ayuda con problemas de software
+
+## Palabras Clave Geográficas (Locales)
+
+- Soporte técnico en Caracas
+- Reparación de PC Caracas
+- Desarrollo web Venezuela
+- Mantenimiento de laptops en Caracas
+- Técnico a domicilio Caracas
+
+---
+
+## Hashtags para Redes Sociales
+
+### Marca
+#Siopermun #Ciopermun #RenierGarcia #SiopermunTech
+
+### Genéricos de Servicios
+#SoporteTecnico #ServicioTecnico #Tecnologia #Informatica #SolucionesDigitales #MantenimientoPreventivo #ReparacionDePC
+
+### Específicos de Servicios
+#DesbloqueoFRP #EliminarCuentaGoogle #DesarrolloWeb #DiseñoWeb #LandingPage #PaginasWeb #InstalacionDeSoftware #OptimizaciónPC #PCGamerVenezuela
+
+### Geográficos
+#Caracas #SoporteTecnicoCaracas #HechoEnVenezuela #ServicioADomicilioCaracas

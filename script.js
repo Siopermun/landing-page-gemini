@@ -1,0 +1,204 @@
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- ELEMENT SELECTORS ---
+    const headerElement = document.querySelector('header');
+    const heroContentElement = document.querySelector('.hero-content'); // Nuevo selector
+    const clockElement = document.getElementById('clock');
+    const animatedElements = document.querySelectorAll('.service-card');
+    const typingTextElement = document.querySelector('.typing-text');
+    const backToTopButton = document.querySelector('.back-to-top-button');
+    const contactForm = document.getElementById('contact-form');
+
+    // --- HEADER SCROLL ---
+    if (headerElement) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // --- HEADER SCROLL ---
+    if (headerElement) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // --- HERO PARALLAX ---
+    if (heroContentElement) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            heroContentElement.style.transform = `translateY(${scrollY * 0.2}px)`; // Ajusta la velocidad aquí
+        });
+    }
+
+    // --- CLOCK ---
+    if (clockElement) {
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    }
+
+    // --- SCROLL ANIMATIONS ---
+    if (animatedElements.length > 0) {
+        const appearOptions = {
+            threshold: 0.2,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        animatedElements.forEach(element => appearOnScroll.observe(element));
+    }
+
+    // --- TYPING ANIMATION ---
+    if (typingTextElement) {
+        const texts = JSON.parse(typingTextElement.dataset.typingTexts);
+        let textIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < texts[textIndex].length) {
+                typingTextElement.textContent += texts[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100);
+            } else {
+                setTimeout(erase, 2000);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typingTextElement.textContent = texts[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, 50);
+            } else {
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(type, 500);
+            }
+        }
+        
+        setTimeout(() => {
+            typingTextElement.textContent = '';
+            type();
+        }, 1000);
+    }
+
+    // --- BACK TO TOP BUTTON ---
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // --- CONTACT FORM (AJAX) ---
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const data = new FormData(form);
+            const action = form.action;
+            let status = form.querySelector('.form-status');
+            if (!status) {
+                status = document.createElement('div');
+                status.className = 'form-status';
+                form.appendChild(status);
+            }
+
+            status.innerHTML = 'Enviando...';
+            status.style.display = 'block';
+
+            fetch(action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = "¡Gracias! Tu mensaje ha sido enviado.";
+                    status.className = 'form-status success';
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        const message = data.errors ? data.errors.map(e => e.message).join(', ') : "Oops! Hubo un problema.";
+                        status.innerHTML = message;
+                        status.className = 'form-status error';
+                    })
+                }
+            }).catch(error => {
+                status.innerHTML = "Oops! Hubo un problema de red.";
+                status.className = 'form-status error';
+            });
+        });
+    }
+
+    // --- SPOTLIGHT EFFECT ON SERVICE CARDS ---
+    if (animatedElements.length > 0) {
+        animatedElements.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.setProperty('--mouse-x', '-1000px');
+                card.style.setProperty('--mouse-y', '-1000px');
+            });
+        });
+    }
+
+    // --- CUSTOM CURSOR ---
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorFollower = document.querySelector('.cursor-follower');
+    const interactableElements = 'a, button, .cta-button, .service-card'; // Elements that interact with the cursor
+
+    if (cursorDot && cursorFollower) {
+        document.addEventListener('mousemove', e => {
+            // Move dot instantly
+            cursorDot.style.left = `${e.clientX}px`;
+            cursorDot.style.top = `${e.clientY}px`;
+
+            // Move follower with a slight delay
+            cursorFollower.style.left = `${e.clientX}px`;
+            cursorFollower.style.top = `${e.clientY}px`;
+        });
+
+        document.querySelectorAll(interactableElements).forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursorFollower.classList.add('interactable');
+            });
+            element.addEventListener('mouseleave', () => {
+                cursorFollower.classList.remove('interactable');
+            });
+        });
+    }
+});
